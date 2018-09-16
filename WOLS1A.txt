@@ -1,0 +1,20 @@
+# recursive
+def rFib(num):
+	sum = 0
+	if num < 2:
+		return num
+	else:
+		sum = rFib(num - 2) + rFib(num - 1)
+	return sum
+	
+>>> rFib(5)
+5
+>>> rFib(10)
+55
+>>> rFib(17)
+1597
+>>> rFib(25)
+75025
+>>> rFib(30)
+832040
+	
