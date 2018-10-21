@@ -5,7 +5,7 @@
 def bubbleSort(a):
     length = len(a)
     for i in range(length):
-        for j in range(length, i, -1):
+        for j in range(length-1, i, -1):
             if a[j] < a[j-1]:
                 bigger = a[j-1]
                 a[j-1] = a[j]
