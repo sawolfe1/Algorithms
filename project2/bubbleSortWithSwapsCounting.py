@@ -1,21 +1,17 @@
 # Bubble Sort with swaps counting
 
 
-def bubbleSortWithSwapsCounting(a):
-    length = len(a)
+def bubbleSortWithSwapsCounting(A):
+    length = len(A)
     i = 0
-    swapcount = 1
-    while i < length and swapcount > 0:
-        swaps = 0
+    isSorted = False
+    while i < length and not isSorted:
+        isSorted = True
         for j in range(length-1, i, -1):
-            if a[j] < a[j-1]:
-                bigger = a[j-1]
-                a[j-1] = a[j]
-                a[j] = bigger
-                swaps += 1
+            if A[j] < A[j-1]:
+                # swap
+                A[j], A[j-1] = A[j-1], A[j]
+                # Signal that a swap has taken place
+                isSorted = False
         i += 1
-        swapcount = swaps
-    return(a)
-
-
-bubbleSortWithSwapsCounting([9, 66, 7, 3, 88, 232, 4, 234, 34234, 343, 980])
+    return(A)

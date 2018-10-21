@@ -10,11 +10,9 @@ def selectionSort(a):
                 mini = j
 
         if (mini != i):
+            # swap
             bigger = a[i]
             a[i] = a[mini]
             a[mini] = bigger
 
     return(a)
-
-
-selectionSort([9, 66, 7, 3, 88, 232, 4, 234, 34234, 343, 980])

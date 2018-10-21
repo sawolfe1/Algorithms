@@ -1,34 +1,31 @@
-import math
+"""
+Source: https://pythonandr.com/2015/07/05/the-merge-sort-python-code/
+"""
 
 
-def mergeSort(A, p, r):
-    if p < r:
-        q = math.floor((p+r)/2)
-        mergeSort(A, p, q)
-        mergeSort(A, q+1, r)
-        merge(A, p, q, r)
-
-
-def merge(A, p, q, r):
-    n1 = q-p+1
-    n2 = r-q
-    L, R = [], []
-    for i in range(n1):
-        L.append(A[p+i])
-    for j in range(n2):
-        R.append(A[q+j])
-
-    L.append(math.inf)
-    R.append(math.inf)
-    x, y = 0, 0
-    for k in range(p, r):
-        if L[x] <= R[y]:
-            A[k] = L[x]
-            x += 1
+def merge(a, b):
+    """ Function to merge two arrays """
+    c = []
+    while len(a) != 0 and len(b) != 0:
+        if a[0] < b[0]:
+            c.append(a[0])
+            a.remove(a[0])
         else:
-            A[k] = R[y]
-            y += 1
+            c.append(b[0])
+            b.remove(b[0])
+    if len(a) == 0:
+        c += b
+    else:
+        c += a
+    return c
 
 
-A = [9, 66, 7, 3, 88, 232, 4, 234, 34234, 343, 980]
-mergeSort(A, 0, len(A))
+def mergeSort(A):
+    """ Function to sort an array using merge sort algorithm """
+    if len(A) < 2:
+        return A
+    else:
+        middle = int(len(A)/2)
+        a = mergeSort(A[:middle])
+        b = mergeSort(A[middle:])
+        return merge(a, b)
